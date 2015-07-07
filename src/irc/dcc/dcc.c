@@ -266,11 +266,11 @@ GIOChannel *dcc_connect_ip(IPADDR *ip, int port)
 	if (own_ip == NULL)
 		own_ip = IPADDR_IS_V6(ip) ? source_host_ip6 : source_host_ip4;
 
-	handle = net_connect_ip(ip, port, own_ip);
+	handle = net_connect_ip(ip, port, own_ip, 0);
 	if (handle == NULL && errno == EADDRNOTAVAIL && own_ip != NULL) {
 		/* dcc_own_ip is external address */
 		own_ip = IPADDR_IS_V6(ip) ? source_host_ip6 : source_host_ip4;
-		handle = net_connect_ip(ip, port, own_ip);
+		handle = net_connect_ip(ip, port, own_ip, 0);
 	}
 	return handle;
 }

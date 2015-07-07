@@ -135,7 +135,7 @@ static int sin_get_port(union sockaddr_union *so)
 }
 
 /* Connect to socket */
-GIOChannel *net_connect(const char *addr, int port, IPADDR *my_ip)
+GIOChannel *net_connect(const char *addr, int port, IPADDR *my_ip, int protonum)
 {
 	IPADDR ip4, ip6, *ip;
 
@@ -165,11 +165,11 @@ GIOChannel *net_connect(const char *addr, int port, IPADDR *my_ip)
 		}
 	}
 
-	return net_connect_ip(ip, port, my_ip);
+	return net_connect_ip(ip, port, my_ip, protonum);
 }
 
 /* Connect to socket with ip address */
-GIOChannel *net_connect_ip(IPADDR *ip, int port, IPADDR *my_ip)
+GIOChannel *net_connect_ip(IPADDR *ip, int port, IPADDR *my_ip, int protonum)
 {
 	union sockaddr_union so;
 	int handle, ret, opt = 1;
@@ -182,7 +182,7 @@ GIOChannel *net_connect_ip(IPADDR *ip, int port, IPADDR *my_ip)
 	/* create the socket */
 	memset(&so, 0, sizeof(so));
         so.sin.sin_family = ip->family;
-	handle = socket(ip->family, SOCK_STREAM, 0);
+	handle = socket(ip->family, SOCK_STREAM, protonum);
 
 	if (handle == -1)
 		return NULL;

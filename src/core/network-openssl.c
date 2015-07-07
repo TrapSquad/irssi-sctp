@@ -561,11 +561,11 @@ static GIOChannel *irssi_ssl_get_iochannel(GIOChannel *handle, int port, SERVER_
 	return gchan;
 }
 
-GIOChannel *net_connect_ip_ssl(IPADDR *ip, int port, IPADDR *my_ip, SERVER_REC *server)
+GIOChannel *net_connect_ip_ssl(IPADDR *ip, int port, IPADDR *my_ip, SERVER_REC *server, int protonum)
 {
 	GIOChannel *handle, *ssl_handle;
 
-	handle = net_connect_ip(ip, port, my_ip);
+	handle = net_connect_ip(ip, port, my_ip, protonum);
 	if (handle == NULL)
 		return NULL;
 	ssl_handle  = irssi_ssl_get_iochannel(handle, port, server);

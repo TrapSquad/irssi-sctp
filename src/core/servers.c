@@ -208,7 +208,7 @@ static void server_real_connect(SERVER_REC *server, IPADDR *ip,
 	const char *errmsg;
 	char *errmsg2;
 	char ipaddr[MAX_IP_LEN];
-        int port;
+        int port, protonum;
 
 	g_return_if_fail(ip != NULL || unix_socket != NULL);
 
@@ -221,8 +221,9 @@ static void server_real_connect(SERVER_REC *server, IPADDR *ip,
 		own_ip = IPADDR_IS_V6(ip) ? server->connrec->own_ip6 : server->connrec->own_ip4;
 		port = server->connrec->proxy != NULL ?
 			server->connrec->proxy_port : server->connrec->port;
+		protonum = server->connrec->use_sctp ? 132 : 0;
 		handle = server->connrec->use_ssl ?
-			net_connect_ip_ssl(ip, port, own_ip, server) : net_connect_ip(ip, port, own_ip);
+			net_connect_ip_ssl(ip, port, own_ip, server, protonum) : net_connect_ip(ip, port, own_ip, protonum);
 	} else {
 		handle = net_connect_unix(unix_socket);
 	}

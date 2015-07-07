@@ -26,6 +26,7 @@ unsigned int last_failed:1; /* if last connection attempt failed */
 unsigned int banned:1; /* if we're banned from this server */
 unsigned int dns_error:1; /* DNS said the host doesn't exist */
 unsigned int use_ssl:1; /* this connection uses SSL */
+unsigned int use_sctp:1; /* this connection uses SCTP */
 unsigned int ssl_verify:1;
 
 GHashTable *module_data;
