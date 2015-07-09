@@ -167,6 +167,7 @@ static void server_setup_fill_server(SERVER_CONNECT_REC *conn,
 	if (sserver->port > 0 && conn->port <= 0)
 		conn->port = sserver->port;
 
+	conn->use_sctp = sserver->use_sctp;
 	conn->use_ssl = sserver->use_ssl;
 	if (conn->ssl_cert == NULL && sserver->ssl_cert != NULL && sserver->ssl_cert[0] != '\0')
 		conn->ssl_cert = g_strdup(sserver->ssl_cert);
