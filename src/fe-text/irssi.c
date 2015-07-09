@@ -86,13 +86,13 @@ static const char *banner_text =
 	" ___           _\n"
 	"|_ _|_ _ _____(_)\n"
  	" | || '_(_-<_-< |\n"
-	"|___|_| /__/__/_|\n"
+	"|___|_| /__/__/_| + Irsula\n"
 	"Irssi v" PACKAGE_VERSION " - http://www.irssi.org";
 
 static const char *firsttimer_text =
 	"- - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-	"Hi there! If this is your first time using Irssi, you\n"
-	"might want to go to our website and read the startup\n"
+	"Hi there! If this is your first time using Irsula, a patch to Irssi that\n "
+	"enables SCTP, you might want to go to our website and read the startup\n"
 	"documentation to get you going.\n\n"
 	"Our community and staff are available to assist you or\n"
 	"to answer any questions you may have.\n\n"

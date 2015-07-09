@@ -305,6 +305,7 @@ SERVER_REC *irc_server_init_connect(SERVER_CONNECT_REC *conn)
 	server->max_msgs_in_cmd = ircconn->max_msgs > 0 ?
 		ircconn->max_msgs : DEFAULT_MAX_MSGS;
 	server->connrec->use_ssl = conn->use_ssl;
+	server->connrec->use_sctp = conn->use_sctp;
 
 	modes_server_init(server);
 
